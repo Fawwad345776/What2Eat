@@ -101,14 +101,20 @@ body {
   flex-shrink: 0;
 }
 
-.brand-img-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  object-fit: cover;
-  box-shadow: 0 3px 10px var(--primary-glow);
-  flex-shrink: 0;
-  display: block;
+.brand-img-icon,
+.brand-link img {
+  width: 36px !important;
+  height: 36px !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  border-radius: 8px !important;
+  object-fit: cover !important;
+  box-shadow: 0 2px 8px var(--primary-glow);
+  flex-shrink: 0 !important;
+  display: inline-block !important;
+  vertical-align: middle;
 }
 
 .brand-badge {
