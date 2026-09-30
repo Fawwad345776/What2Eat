@@ -57,6 +57,7 @@ data class BenefitItem(
 @Composable
 fun SubscriptionScreen(
     onNavigateBack: () -> Unit,
+    onSubscriptionSuccess: () -> Unit = onNavigateBack,
     viewModel: SubscriptionViewModel = viewModel()
 ) {
     val context = LocalContext.current
@@ -80,6 +81,7 @@ fun SubscriptionScreen(
             is SubscriptionUiState.Success -> {
                 Toast.makeText(context, state.message, Toast.LENGTH_LONG).show()
                 viewModel.clearUiState()
+                onSubscriptionSuccess()
             }
             is SubscriptionUiState.Error -> {
                 Toast.makeText(context, state.message, Toast.LENGTH_SHORT).show()
@@ -87,6 +89,53 @@ fun SubscriptionScreen(
             }
             else -> {}
         }
+    }
+
+    LaunchedEffect(isPro) {
+        if (isPro) {
+            onSubscriptionSuccess()
+        }
+    }
+
+    if (isPro) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(BackgroundOffWhite),
+            contentAlignment = Alignment.Center
+        ) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.padding(24.dp)
+            ) {
+                Text(text = "👑", fontSize = 48.sp)
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(
+                    text = "You are a VIP PRO Member!",
+                    fontFamily = NunitoFontFamily,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
+                    color = DarkText
+                )
+                Spacer(modifier = Modifier.height(6.dp))
+                Text(
+                    text = "All premium recipes, meal planner & ad-free features are unlocked.",
+                    fontFamily = NunitoFontFamily,
+                    fontSize = 13.sp,
+                    color = TextMuted,
+                    textAlign = TextAlign.Center
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+                Button(
+                    onClick = onNavigateBack,
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryOrange),
+                    shape = RoundedCornerShape(12.dp)
+                ) {
+                    Text(text = "Back to Kitchen", fontFamily = NunitoFontFamily, fontWeight = FontWeight.Bold, color = SurfaceWhite)
+                }
+            }
+        }
+        return
     }
 
     // Default Fallback Price Display when running outside Google Play Store emulator

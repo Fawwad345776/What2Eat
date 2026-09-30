@@ -94,12 +94,12 @@ fun AppDrawer(
     val hasPhoto = isGoogleUser && currentUser?.photoUrl != null && currentUser?.photoUrl.toString().isNotBlank()
 
     // Streamlined, uncluttered core navigation items
-    val coreDrawerItems = listOf(
+    val coreDrawerItems = listOfNotNull(
         DrawerItem("Home", Icons.Default.Home, Screen.Home.route, emoji = "🏠"),
         DrawerItem("What to Cook Today", Icons.Default.RestaurantMenu, Screen.MealDecider.route, emoji = "🍲"),
         DrawerItem("Kitchen Preferences", Icons.Default.Restaurant, Screen.KitchenPreferences.route, emoji = "🍽️"),
         DrawerItem("30-Day Cooked History", Icons.Default.History, Screen.CookedHistory.route, emoji = "📜"),
-        DrawerItem("Subscription & PRO", Icons.Default.Star, Screen.Subscription.route, isProBadge = true, emoji = "👑")
+        if (!isPro) DrawerItem("Subscription & PRO", Icons.Default.Star, Screen.Subscription.route, isProBadge = true, emoji = "👑") else null
     )
 
     // Pricing text based on country

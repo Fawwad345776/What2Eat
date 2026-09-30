@@ -281,14 +281,20 @@ fun HomeScreen(
                     Surface(
                         shape = RoundedCornerShape(20.dp),
                         color = GoldProContainer,
-                        modifier = Modifier.clickable { onNavigateToSubscription() }
+                        modifier = if (!isProUser) {
+                            Modifier.clickable { onNavigateToSubscription() }
+                        } else {
+                            Modifier.clickable {
+                                Toast.makeText(context, "VIP PRO Member Active 👑", Toast.LENGTH_SHORT).show()
+                            }
+                        }
                     ) {
                         Row(
                             modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(
-                                text = "👑 PRO",
+                                text = if (isProUser) "👑 PRO" else "👑 Upgrade",
                                 fontFamily = NunitoFontFamily,
                                 fontWeight = FontWeight.ExtraBold,
                                 fontSize = 13.sp,
