@@ -438,7 +438,7 @@ fun AppDrawer(
                                 color = DarkText
                             )
                             Text(
-                                text = "fawwadshamin@gmail.com",
+                                text = "fawwadshamim@gmail.com",
                                 fontFamily = NunitoFontFamily,
                                 fontSize = 11.sp,
                                 color = PrimaryOrange
@@ -694,13 +694,13 @@ fun AppDrawer(
                 Button(
                     onClick = {
                         val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
-                            data = Uri.parse("mailto:fawwadshamin@gmail.com")
+                            data = Uri.parse("mailto:fawwadshamim@gmail.com")
                             putExtra(Intent.EXTRA_SUBJECT, "what2Eat — Feedback / Suggestion / Issue")
                         }
                         try {
                             context.startActivity(Intent.createChooser(emailIntent, "Send Email via"))
                         } catch (e: Exception) {
-                            Toast.makeText(context, "Email: fawwadshamin@gmail.com", Toast.LENGTH_LONG).show()
+                            Toast.makeText(context, "Email: fawwadshamim@gmail.com", Toast.LENGTH_LONG).show()
                         }
                         showContactDialog = false
                     },
@@ -721,7 +721,7 @@ fun AppDrawer(
                 OutlinedButton(
                     onClick = {
                         val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                        val clip = ClipData.newPlainText("what2Eat Support Email", "fawwadshamin@gmail.com")
+                        val clip = ClipData.newPlainText("what2Eat Support Email", "fawwadshamim@gmail.com")
                         clipboard.setPrimaryClip(clip)
                         Toast.makeText(context, "Email copied to clipboard! ✓", Toast.LENGTH_SHORT).show()
                     },
@@ -785,7 +785,7 @@ fun AppDrawer(
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(
-                                text = "fawwadshamin@gmail.com",
+                                text = "fawwadshamim@gmail.com",
                                 fontFamily = NunitoFontFamily,
                                 fontWeight = FontWeight.ExtraBold,
                                 fontSize = 14.sp,
