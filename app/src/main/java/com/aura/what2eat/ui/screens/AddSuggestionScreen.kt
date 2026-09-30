@@ -1071,7 +1071,7 @@ fun AddSuggestionScreen(
             },
             text = {
                 Text(
-                    text = "You have used all 3 free recipe generations with What2eat for today. Upgrade to What2Eat PRO for unlimited recipe generations, unlimited dining suggestions, ad-free experience, and full meal planner access!",
+                    text = "You have used all 3 free recipe generations with What2eat for today. Upgrade to What2Eat PRO for unlimited recipe generations, unlimited dining suggestions, and full meal planner access!",
                     fontFamily = NunitoFontFamily,
                     fontSize = 14.sp,
                     color = DarkText

@@ -119,7 +119,7 @@ fun SubscriptionScreen(
                 )
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(
-                    text = "All premium recipes, meal planner & ad-free features are unlocked.",
+                    text = "All premium recipes, weekly planner & smart AI features are unlocked.",
                     fontFamily = NunitoFontFamily,
                     fontSize = 13.sp,
                     color = TextMuted,
@@ -167,8 +167,8 @@ fun SubscriptionScreen(
         BenefitItem(Icons.Default.Bolt, "Unlimited Dish Skips", "Generate endless meal options with zero limits"),
         BenefitItem(Icons.AutoMirrored.Filled.MenuBook, "Unlimited Full Recipe Unlocks", "Access detailed ingredients, prep steps & chef pro tips"),
         BenefitItem(Icons.Default.Kitchen, "Unlimited Pantry Searches", "Cook with what's in your fridge any time"),
-        BenefitItem(Icons.Default.CalendarMonth, "Full 7-Day Meal Planner Access", "Plan custom weekly lunch & dinner menus for family"),
-        BenefitItem(Icons.Default.Block, "100% Ad-Free Experience", "No banner, interstitial, or video ads anywhere")
+        BenefitItem(Icons.Default.CalendarMonth, "Full 7-Day Meal Planner Access", "Plan custom weekly lunch & dinner menus for family")
+        // BenefitItem(Icons.Default.Block, "100% Ad-Free Experience", "No banner, interstitial, or video ads anywhere")
     )
 
     Scaffold(

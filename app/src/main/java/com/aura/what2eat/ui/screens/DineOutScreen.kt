@@ -804,7 +804,7 @@ fun DineOutScreen(
             },
             text = {
                 Text(
-                    text = "You have used all 3 free dining suggestions for today. Upgrade to What2Eat PRO for unlimited daily suggestions, personalized AI recommendations, ad-free dining, and full meal planner access!",
+                    text = "You have used all 3 free dining suggestions for today. Upgrade to What2Eat PRO for unlimited daily suggestions, personalized AI recommendations, and full meal planner access!",
                     fontFamily = NunitoFontFamily,
                     fontSize = 14.sp,
                     color = DarkText

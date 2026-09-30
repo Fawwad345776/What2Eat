@@ -537,7 +537,7 @@ fun AppDrawer(
                         )
 
                         Text(
-                            text = "Unlimited skips • 7-day planner • Ad-free",
+                            text = "Unlimited skips • 7-day planner • VIP AI",
                             fontFamily = NunitoFontFamily,
                             fontSize = 11.sp,
                             color = TextMuted
