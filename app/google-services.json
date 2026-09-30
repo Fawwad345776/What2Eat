@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "945399859497",
+    "project_id": "what2eat-84f69",
+    "storage_bucket": "what2eat-84f69.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945399859497:android:15c99dfb78d2d1d15d0f38",
+        "android_client_info": {
+          "package_name": "com.aura.what2eat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "945399859497-m3gamvmtb8a5puqe9amc93bhhaqm670q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aura.what2eat",
+            "certificate_hash": "d5954e52de7abd8655dfec712527d78b66b23e81"
+          }
+        },
+        {
+          "client_id": "945399859497-1k0qa1m3rfgnai1fslbcuv6kph3dcu82.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIujoVcQyTxqmPY1QEeBKaE-ksZd5Ck0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "945399859497-1k0qa1m3rfgnai1fslbcuv6kph3dcu82.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

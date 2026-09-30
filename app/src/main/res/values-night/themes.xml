@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme (dark mode). -->
+    <style name="Theme.What2Eat" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/splash_window_background</item>
+    </style>
+
+    <!-- Splash screen theme using AndroidX SplashScreen compat (night). -->
+    <style name="Theme.What2Eat.Splash" parent="Theme.SplashScreen">
+        <item name="android:windowBackground">@color/splash_window_background</item>
+        <item name="windowSplashScreenBackground">@color/splash_window_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_branding</item>
+        <item name="postSplashScreenTheme">@style/Theme.What2Eat</item>
+    </style>
+</resources>

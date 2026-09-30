@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CallWaiter — Smarter Table Service (Promotional Video)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header / Navigation Bar -->
+  <header class="app-header">
+    <div class="header-brand">
+      <div class="brand-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          <circle cx="12" cy="3" r="1" fill="currentColor"></circle>
+        </svg>
+      </div>
+      <div class="brand-title-wrap">
+        <span class="brand-name">CallWaiter<span class="brand-dot">.</span></span>
+        <span class="brand-badge">SaaS Commercial • 28s</span>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button id="toggle-audio-btn" class="header-btn" title="Toggle Sound">
+        <span class="btn-icon" id="audio-icon">🔊</span>
+        <span class="btn-label" id="audio-label">Sound On</span>
+      </button>
+      <button id="export-video-btn" class="header-btn btn-accent" title="Record & Download Video">
+        <span class="btn-icon">⏺</span>
+        <span class="btn-label" id="export-label">Export Video (HD)</span>
+      </button>
+      <button id="fullscreen-btn" class="header-btn" title="Toggle Fullscreen">
+        <span class="btn-icon">⛶</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Video Stage Container -->
+  <main class="video-stage-wrapper">
+    <div class="video-container" id="video-container">
+      <!-- Hidden Canvas for Video Export Recording -->
+      <canvas id="export-canvas" width="1920" height="1080" style="display:none;"></canvas>
+
+      <!-- Video Viewport (16:9 1920x1080 scaled) -->
+      <div class="video-viewport" id="video-viewport">
+
+        <!-- ================= SCENE 1: THE PROBLEM (0-4s) ================= -->
+        <div class="scene" id="scene-1" data-scene="1">
+          <div class="scene-bg" id="bg-scene-1" style="background-image: url('assets/scene1.jpg');"></div>
+          <div class="cinematic-overlay vignette"></div>
+          <div class="cinematic-overlay warm-glow"></div>
+          
+          <div class="scene-content flex-center">
+            <div class="problem-caption-box" id="s1-caption">
+              <span class="scene-tag">THE PROBLEM</span>
+              <h1 class="cinematic-headline">Still waiting for a waiter?</h1>
+              <p class="cinematic-subline">Peak dining hours. Busy staff. Frustrated guests.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= SCENE 2: THE SOLUTION (4-8s) ================= -->
+        <div class="scene" id="scene-2" data-scene="2">
+          <div class="scene-bg" id="bg-scene-2" style="background-image: url('assets/scene2.jpg');"></div>
+          <div class="cinematic-overlay vignette"></div>
+          <div class="cinematic-overlay amber-glow"></div>
+
+          <!-- Scanning Reticle Graphic -->
+          <div class="qr-target-box" id="qr-scanner-reticle">
+            <div class="reticle-corner tl"></div>
+            <div class="reticle-corner tr"></div>
+            <div class="reticle-corner bl"></div>
+            <div class="reticle-corner br"></div>
+            <div class="reticle-laser" id="scanner-laser"></div>
+            <div class="scan-pulse" id="scan-pulse"></div>
+            <div class="scan-pill" id="scan-pill">
+              <span class="scan-icon">⚡</span> Table 14 Detected
+            </div>
+          </div>
+
+          <div class="scene-content flex-center">
+            <div class="solution-caption-box" id="s2-caption">
+              <span class="scene-tag tag-accent">THE SOLUTION</span>
+              <h1 class="cinematic-headline headline-lg">
+                <span class="word w1">Just Scan.</span>
+                <span class="word w2">Order.</span>
+                <span class="word w3 highlight-gradient">Relax.</span>
+              </h1>
+              <p class="cinematic-subline">No app download required. Instant frictionless service.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= SCENE 3: CUSTOMER EXPERIENCE (8-14s) ================= -->
+        <div class="scene" id="scene-3" data-scene="3">
+          <div class="scene-bg" id="bg-scene-3" style="background-image: url('assets/scene3.jpg');"></div>
+          <div class="cinematic-overlay vignette dark-vignette"></div>
+
+          <div class="scene-content s3-layout">
+            <!-- Left Info Panel -->
+            <div class="s3-info-panel">
+              <span class="scene-tag tag-accent">SEAMLESS GUEST EXPERIENCE</span>
+              <h2 class="section-title">Order & Track in Real Time</h2>
+              <p class="section-desc">Guests browse rich photo menus, customize orders, and monitor kitchen progress directly from their table.</p>
+
+              <!-- Dynamic Feature Pills -->
+              <div class="feature-pills-list">
+                <div class="feature-pill active" id="pill-menu">
+                  <span class="pill-dot"></span> Digital Visual Menu
+                </div>
+                <div class="feature-pill" id="pill-order">
+                  <span class="pill-dot"></span> 1-Tap Food Selection
+                </div>
+                <div class="feature-pill" id="pill-track">
+                  <span class="pill-dot"></span> Live Kitchen Tracker
+                </div>
+                <div class="feature-pill" id="pill-waiter">
+                  <span class="pill-dot"></span> Instant Waiter Call
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Interactive Phone Mockup -->
+            <div class="phone-mockup-wrapper" id="phone-mockup">
+              <div class="smartphone-frame">
+                <!-- Dynamic Island / Top Notch -->
+                <div class="phone-dynamic-island">
+                  <div class="island-camera"></div>
+                </div>
+
+                <!-- Phone Screen Content (CallWaiter Customer PWA) -->
+                <div class="phone-screen">
+                  <!-- App Header -->
+                  <div class="phone-app-header">
+                    <div class="phone-brand">
+                      <span class="phone-logo">🛎️ CallWaiter</span>
+                      <span class="phone-table-badge">Table 14</span>
+                    </div>
+                    <button class="call-waiter-mini-btn" id="phone-call-btn">
+                      <span>Call Waiter</span>
+                    </button>
+                  </div>
+
+                  <!-- Category Scroller -->
+                  <div class="phone-categories">
+                    <span class="cat-chip active">★ Chef Specials</span>
+                    <span class="cat-chip">Signature Mains</span>
+                    <span class="cat-chip">Beverages</span>
+                  </div>
+
+                  <!-- Food Item Card 1 -->
+                  <div class="phone-food-card" id="food-card-1">
+                    <div class="food-img-thumb" style="background-image: url('assets/scene3.jpg'); background-size: cover; background-position: center bottom;"></div>
+                    <div class="food-details">
+                      <div class="food-title-row">
+                        <span class="food-name">Dry-Aged Wagyu Burger</span>
+                        <span class="food-price">$24.00</span>
+                      </div>
+                      <p class="food-desc">Brioche bun, caramelized onions, smoked truffle aioli.</p>
+                      <button class="add-to-cart-btn" id="btn-add-food">
+                        <span class="btn-plus">+</span> Added
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Food Item Card 2 -->
+                  <div class="phone-food-card mini-card" id="food-card-2">
+                    <div class="food-details">
+                      <div class="food-title-row">
+                        <span class="food-name">Passionfruit Basil Spritz</span>
+                        <span class="food-price">$12.00</span>
+                      </div>
+                      <span class="status-added-tag">✓ Added to Table 14</span>
+                    </div>
+                  </div>
+
+                  <!-- Order Status Live Tracker Panel -->
+                  <div class="order-status-card" id="phone-status-card">
+                    <div class="status-header">
+                      <span class="status-title">Order #204 Status</span>
+                      <span class="status-live-indicator"><span class="pulse-green"></span> Live</span>
+                    </div>
+
+                    <!-- Steps Timeline -->
+                    <div class="status-stepper">
+                      <div class="step-item" id="step-received">
+                        <div class="step-circle">✓</div>
+                        <span class="step-label">Received</span>
+                      </div>
+                      <div class="step-line" id="line-1"></div>
+                      <div class="step-item" id="step-preparing">
+                        <div class="step-circle">🍳</div>
+                        <span class="step-label">Preparing</span>
+                      </div>
+                      <div class="step-line" id="line-2"></div>
+                      <div class="step-item" id="step-ready">
+                        <div class="step-circle">🔔</div>
+                        <span class="step-label">Ready</span>
+                      </div>
+                      <div class="step-line" id="line-3"></div>
+                      <div class="step-item" id="step-served">
+                        <div class="step-circle">✨</div>
+                        <span class="step-label">Served</span>
+                      </div>
+                    </div>
+
+                    <!-- Action Bar -->
+                    <div class="phone-action-row">
+                      <button class="phone-secondary-btn" id="btn-request-bill">
+                        <span>💳 Request Bill</span>
+                      </button>
+                      <button class="phone-primary-btn" id="btn-call-staff">
+                        <span>🛎️ Need Waiter</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= SCENE 4: RESTAURANT DASHBOARD (14-20s) ================= -->
+        <div class="scene" id="scene-4" data-scene="4">
+          <div class="scene-bg" id="bg-scene-4" style="background-image: url('assets/scene4.jpg');"></div>
+          <div class="cinematic-overlay vignette dark-vignette"></div>
+
+          <div class="scene-content s4-layout">
+            <!-- Top Banner Caption -->
+            <div class="s4-header-caption" id="s4-caption">
+              <span class="scene-tag tag-accent">STAFF LIVE CONSOLE</span>
+              <h2 class="cinematic-headline headline-md">Everything your staff needs. In one place.</h2>
+              <p class="cinematic-subline">Live orders, waiter requests, bill alerts, and table turnover automated in real time.</p>
+            </div>
+
+            <!-- Glassmorphic Dashboard Console Mockup -->
+            <div class="dashboard-console-wrapper" id="dashboard-console">
+              <!-- Console Top Navigation -->
+              <div class="console-nav">
+                <div class="console-brand">
+                  <span class="console-logo">⚡ CallWaiter OS</span>
+                  <span class="service-chip"><span class="chip-dot"></span> Evening Dinner Rush</span>
+                </div>
+                <div class="console-stats">
+                  <div class="stat-pill"><span class="stat-num">12</span> Active Tables</div>
+                  <div class="stat-pill highlight"><span class="stat-num">38s</span> Avg Waiter Response</div>
+                  <div class="stat-pill"><span class="stat-num">+34%</span> Table Turn Rate</div>
+                </div>
+              </div>
+
+              <!-- Console Main Body Grid -->
+              <div class="console-body">
+                <!-- Left: Live Table Grid -->
+                <div class="tables-grid-section">
+                  <div class="section-label">FLOOR PLAN • LIVE TABLE STATUS</div>
+                  <div class="tables-grid">
+                    <div class="table-card occupied" id="t-table-1">
+                      <div class="tbl-head"><span>T-01</span><span class="tbl-status">Occupied</span></div>
+                      <div class="tbl-sub">2 Guests • 35m</div>
+                    </div>
+                    <div class="table-card occupied" id="t-table-2">
+                      <div class="tbl-head"><span>T-02</span><span class="tbl-status">Occupied</span></div>
+                      <div class="tbl-sub">4 Guests • 18m</div>
+                    </div>
+                    <div class="table-card alert-bill" id="t-table-3">
+                      <div class="tbl-head"><span>T-03</span><span class="tbl-badge-bill">💳 Bill Req</span></div>
+                      <div class="tbl-sub">$142.00 • Pay via Card</div>
+                    </div>
+                    <div class="table-card alert-order" id="t-table-14">
+                      <div class="tbl-head"><span>T-14</span><span class="tbl-badge-order">⚡ New Order</span></div>
+                      <div class="tbl-sub">2 Items • Kitchen Prep</div>
+                    </div>
+                    <div class="table-card alert-waiter" id="t-table-7">
+                      <div class="tbl-head"><span>T-07</span><span class="tbl-badge-waiter">🛎️ Waiter Call</span></div>
+                      <div class="tbl-sub">Table assistance</div>
+                    </div>
+                    <div class="table-card transition-table" id="t-table-9">
+                      <div class="tbl-head"><span>T-09</span><span class="tbl-status-target" id="t9-badge">Occupied</span></div>
+                      <div class="tbl-sub" id="t9-sub">Bill Settled • 4 Guests</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right: Live Activity Stream & Real-time Alerts -->
+                <div class="activity-stream-section">
+                  <div class="section-label">REAL-TIME SERVICE FEED</div>
+
+                  <!-- Alert 1: New Order -->
+                  <div class="stream-alert-card new-order-alert" id="stream-order-card">
+                    <div class="alert-icon-col">🍔</div>
+                    <div class="alert-info-col">
+                      <div class="alert-title-row">
+                        <span class="alert-table">Table 14</span>
+                        <span class="alert-time">Just now</span>
+                      </div>
+                      <div class="alert-items">1x Wagyu Burger, 1x Passionfruit Spritz</div>
+                      <div class="alert-action-row">
+                        <span class="status-badge-kitchen">Sent to Kitchen</span>
+                        <span class="staff-tag">Auto-Assigned: Chef Marco</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Alert 2: Waiter Call -->
+                  <div class="stream-alert-card waiter-call-alert" id="stream-waiter-card">
+                    <div class="alert-icon-col">🛎️</div>
+                    <div class="alert-info-col">
+                      <div class="alert-title-row">
+                        <span class="alert-table">Table 07</span>
+                        <span class="alert-time">12s ago</span>
+                      </div>
+                      <div class="alert-items">Customer requesting additional water & napkins</div>
+                      <div class="alert-action-row">
+                        <button class="respond-btn" id="btn-respond">
+                          <span>✓ Waiter Responded</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Alert 3: Bill Settlement & Table Turn -->
+                  <div class="stream-alert-card bill-alert" id="stream-bill-card">
+                    <div class="alert-icon-col">💳</div>
+                    <div class="alert-info-col">
+                      <div class="alert-title-row">
+                        <span class="alert-table">Table 09</span>
+                        <span class="alert-time">Paid Online</span>
+                      </div>
+                      <div class="alert-items">Bill paid via Apple Pay • Table ready to turn</div>
+                      <div class="alert-action-row">
+                        <span class="table-turnover-tag" id="tag-turned">Table Status: Available</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= SCENE 5: FINAL SALES MESSAGE (20-28s) ================= -->
+        <div class="scene" id="scene-5" data-scene="5">
+          <div class="scene-bg" id="bg-scene-5" style="background-image: url('assets/scene5.jpg');"></div>
+          <div class="cinematic-overlay vignette dark-vignette-heavy"></div>
+          <div class="cinematic-overlay luxury-radial"></div>
+
+          <div class="scene-content flex-center s5-layout">
+            <!-- Brand & Device Composite Showcase -->
+            <div class="s5-composite-hero" id="s5-hero">
+              <!-- Brand Identity -->
+              <div class="brand-hero-lockup">
+                <div class="hero-logo-mark">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    <circle cx="12" cy="3" r="1.5" fill="currentColor"></circle>
+                  </svg>
+                </div>
+                <div class="hero-brand-name">CallWaiter<span class="dot-accent">.</span></div>
+              </div>
+
+              <!-- Main Value Prop Headline -->
+              <h1 class="hero-main-title" id="s5-main-title">
+                Turn Every Table Into a <span class="highlight-shimmer">Smarter Table.</span>
+              </h1>
+
+              <!-- Feature Highlights Strip -->
+              <div class="feature-strip" id="s5-feature-strip">
+                <div class="strip-item"><span class="check-icon">✓</span> QR Ordering</div>
+                <div class="strip-sep">•</div>
+                <div class="strip-item"><span class="check-icon">✓</span> Live Orders</div>
+                <div class="strip-sep">•</div>
+                <div class="strip-item"><span class="check-icon">✓</span> Waiter Calls</div>
+                <div class="strip-sep">•</div>
+                <div class="strip-item"><span class="check-icon">✓</span> Digital Bills</div>
+              </div>
+
+              <!-- Final Call to Action -->
+              <div class="hero-cta-box" id="s5-cta-box">
+                <div class="cta-button-glow">
+                  <button class="cta-button" id="cta-button-link">
+                    <span>Bring smarter table service to your restaurant</span>
+                    <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </button>
+                </div>
+                <div class="cta-micro-copy">No proprietary hardware needed • Setup in under 15 minutes • Boost revenue by 25%+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= CINEMATIC LETTERBOX BARS ================= -->
+        <div class="letterbox top-bar"></div>
+        <div class="letterbox bottom-bar"></div>
+
+        <!-- Watermark / Current Scene Indicator -->
+        <div class="video-hud">
+          <div class="hud-scene-name" id="hud-scene-indicator">SCENE 1: THE PROBLEM</div>
+          <div class="hud-timecode" id="hud-timecode">00:00 / 00:28</div>
+        </div>
+      </div>
+
+      <!-- Controls Overlay Bar -->
+      <div class="video-controls-bar">
+        <div class="controls-left">
+          <button id="play-pause-btn" class="ctrl-btn play-btn" title="Play / Pause">
+            <span id="play-icon">▶</span>
+          </button>
+          <button id="replay-btn" class="ctrl-btn" title="Restart Video">
+            <span>↺</span>
+          </button>
+          <span class="ctrl-time" id="ctrl-current-time">0:00</span>
+          <span class="ctrl-time-slash">/</span>
+          <span class="ctrl-time" id="ctrl-total-time">0:28</span>
+        </div>
+
+        <!-- Scrubber Bar with Scene Markers -->
+        <div class="scrubber-container" id="scrubber-container">
+          <div class="scrubber-track">
+            <div class="scrubber-progress" id="scrubber-progress"></div>
+            <div class="scrubber-handle" id="scrubber-handle"></div>
+
+            <!-- Scene Markers -->
+            <div class="scene-marker" style="left: 0%;" data-time="0" title="Scene 1: The Problem (0-4s)">
+              <span class="marker-tooltip">0s: The Problem</span>
+            </div>
+            <div class="scene-marker" style="left: 14.28%;" data-time="4" title="Scene 2: The Solution (4-8s)">
+              <span class="marker-tooltip">4s: The Solution</span>
+            </div>
+            <div class="scene-marker" style="left: 28.57%;" data-time="8" title="Scene 3: Customer Experience (8-14s)">
+              <span class="marker-tooltip">8s: Customer Flow</span>
+            </div>
+            <div class="scene-marker" style="left: 50.00%;" data-time="14" title="Scene 4: Staff Dashboard (14-20s)">
+              <span class="marker-tooltip">14s: Staff Dashboard</span>
+            </div>
+            <div class="scene-marker" style="left: 71.42%;" data-time="20" title="Scene 5: Call to Action (20-28s)">
+              <span class="marker-tooltip">20s: Closing CTA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls-right">
+          <!-- Scene Jump Buttons -->
+          <div class="scene-jump-pills">
+            <button class="scene-pill-btn active" data-time="0">S1</button>
+            <button class="scene-pill-btn" data-time="4">S2</button>
+            <button class="scene-pill-btn" data-time="8">S3</button>
+            <button class="scene-pill-btn" data-time="14">S4</button>
+            <button class="scene-pill-btn" data-time="20">S5</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="audio-engine.js"></script>
+  <script src="video-engine.js"></script>
+</body>
+</html>

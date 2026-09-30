@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.What2Eat" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/splash_window_background</item>
+    </style>
+
+    <!-- Android 12+ (API 31+) SplashScreen theme.
+         Uses both compat and native android: attributes for full coverage.
+         The native attributes are only understood on API 31+ so they live here. -->
+    <style name="Theme.What2Eat.Splash" parent="Theme.SplashScreen">
+        <!-- Window background matches splash to prevent any black flash -->
+        <item name="android:windowBackground">@color/splash_window_background</item>
+        <!-- Compat attributes (handled by AndroidX SplashScreen library) -->
+        <item name="windowSplashScreenBackground">@color/splash_window_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_branding</item>
+        <item name="postSplashScreenTheme">@style/Theme.What2Eat</item>
+        <!-- Native API 31+ attributes -->
+        <item name="android:windowSplashScreenBackground">@color/splash_window_background</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash_branding</item>
+    </style>
+</resources>

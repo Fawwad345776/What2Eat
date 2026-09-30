@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Splash screen icon drawable for AndroidX SplashScreen API.
+     Android 12+ masks the icon with a circle — only the inner 160dp of the
+     240dp canvas is visible. This layer-list centers app_logo.png inside that
+     safe zone so it won't be cropped. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Transparent fill so the full 240dp canvas is occupied -->
+    <item android:gravity="fill">
+        <color android:color="@android:color/transparent" />
+    </item>
+    <!-- Logo centred within the 160dp safe zone (with some padding) -->
+    <item
+        android:width="140dp"
+        android:height="140dp"
+        android:gravity="center"
+        android:drawable="@drawable/app_logo" />
+</layer-list>
